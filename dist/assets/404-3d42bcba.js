@@ -1,0 +1,1 @@
+import{_ as o,o as t,f as s,d as e}from"./index-1742d53e.js";const n={name:"dashboard"},a=e("div",null," 404 ",-1),r=e("div",null," page not found error ",-1),c=[a,r];function _(d,i,l,p,f,u){return t(),s("div",null,c)}const m=o(n,[["render",_]]);export{m as default};
