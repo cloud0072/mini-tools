@@ -14,18 +14,26 @@ export const menus = [
     meta: {title: '二维码', icon: 'QrcodeOutlined'},
     component: () => import('@/views/tools/qrcode.vue'),
   },
+  {
+    path: '/game/heyunwuliu',
+    name: 'heyunwuliu',
+    meta: {title: '鹤运物流', icon: 'DashboardOutlined'},
+    component: () => import('@/views/game/heyunwuliu.vue'),
+  },
+  {
+    path: '/game/shudu',
+    name: 'shudu',
+    meta: {title: '鹤运物流', icon: 'TableOutlined'},
+    component: () => import('@/views/game/shudu.vue'),
+  },
 ]
 
 const staticRoutes = [
   {
     path: '/',
     name: 'Index',
-    redirect: '/tools/encode',
-  },
-  {
-    path: '/tools',
-    name: 'Tools',
     component: SideBarLayout,
+    redirect: '/tools/encode',
     children: menus,
   },
   {
