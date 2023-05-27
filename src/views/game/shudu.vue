@@ -77,8 +77,10 @@ export default {
 
     const getCellBorderClassName = (index) => {
       const style = {
-        'cell-border-right': index % 9 === 2 || index % 9 === 5,
-        'cell-border-bottom': Math.floor(index / 9) === 2 || Math.floor(index / 9) === 5,
+        'cell-border-top': Math.floor(index / 9) === 0,
+        'cell-border-right': index % 9 === 2 || index % 9 === 5 || index % 9 === 8,
+        'cell-border-bottom': Math.floor(index / 9) === 2 || Math.floor(index / 9) === 5 || Math.floor(index / 9) === 8,
+        'cell-border-left': index % 9 === 0,
         'cell-wrapper-selected' : state.selected === index,
         'cell-none-editable': initList[index] !== 0,
       }
@@ -133,23 +135,21 @@ export default {
   text-align: center;
 }
 .panel-border {
-  width: 550px;
-  height: 550px;
+  width: 552px;
+  height: 552px;
   border: 2px solid #333;
   padding: 1px;
 }
 .panel-wrapper {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
-  width: 542px;
-  height: 542px;
+  width: 544px;
+  height: 544px;
   border: 1px solid @border-bold-color;
   box-sizing: content-box;
 }
 
 .panel-cell {
-  position: relative;
   width: @cell-size - 2px;
   height: @cell-size - 2px;
   line-height: @cell-size - 2px;
@@ -160,25 +160,30 @@ export default {
   border: 1px solid @border-color;
   box-sizing: content-box;
   background: white;
-  z-index: 0;
 }
+
 .cell-none-editable {
   color: @border-bold-color;
 }
+
+.cell-border-top {
+  border-top: 2px solid @border-bold-color;
+}
+
 .cell-border-right {
   border-right: 2px solid @border-bold-color;
-  margin-right: 0 !important;
 }
 
 .cell-border-bottom {
   border-bottom: 2px solid @border-bold-color;
-  margin-bottom: 0 !important;
+}
+
+.cell-border-left {
+  border-left: 2px solid @border-bold-color;
 }
 
 .cell-wrapper-selected {
-  border: 2px solid @danger-color;
-  z-index: 1;
-  margin: -1px;
+  background: lightcyan;
 }
 
 .game-actions {
