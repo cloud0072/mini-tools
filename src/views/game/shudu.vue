@@ -108,7 +108,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@num-color: rgb(0, 20, 224);
+@num-color: #0014e0;
+@btn-color: #1890ff;
 @danger-color: #ed3434;
 @border-color: #999;
 @border-bold-color: #333;
@@ -135,16 +136,17 @@ export default {
   text-align: center;
 }
 .panel-border {
-  width: 552px;
-  height: 552px;
+  width: @cell-size * 9 + 4px + 2px;
+  height: @cell-size * 9 + 4px + 2px;
   border: 2px solid #333;
   padding: 1px;
+  box-sizing: content-box;
 }
 .panel-wrapper {
   display: flex;
   flex-wrap: wrap;
-  width: 544px;
-  height: 544px;
+  width: @cell-size * 9 + 4px;
+  height: @cell-size * 9 + 4px;
   border: 1px solid @border-bold-color;
   box-sizing: content-box;
 }
@@ -207,7 +209,7 @@ export default {
   font-size: 16px;
   font-weight: 600;
   color: white;
-  background: #1890ff;
+  background: @btn-color;
 }
 
 .btn-disabled {
