@@ -2,9 +2,11 @@
   <div class="game-container">
     <div class="game-panel">
       <div class="game-title">数独</div>
-      <div class="panel-wrapper">
-        <div ref="cellRefs" class="panel-cell" :class="getCellBorderClassName(i)" v-for="(cell, i) in cellList" @mousedown="onSelect(i)" :key="i">
-          {{ cell ? cell : ' ' }}
+      <div class="panel-border">
+        <div class="panel-wrapper">
+          <div ref="cellRefs" class="panel-cell" :class="getCellBorderClassName(i)" v-for="(cell, i) in cellList" @mousedown="onSelect(i)" :key="i">
+            {{ cell ? cell : ' ' }}
+          </div>
         </div>
       </div>
     </div>
@@ -18,6 +20,10 @@
         </div>
         <div class="btn-cell action-cell" @click="onFilled(0)">清空</div>
       </div>
+    </div>
+    <div class="game-doc">
+      <div>教学视频:</div>
+      <a href="https://www.bilibili.com/video/BV1Mx411z7uq" target="_blank">https://www.bilibili.com/video/BV1Mx411z7uq</a>
     </div>
   </div>
 </template>
@@ -100,6 +106,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@num-color: rgb(0, 20, 224);
+@danger-color: #ed3434;
+@border-color: #999;
+@border-bold-color: #333;
+
+@font-size: 32px;
+@cell-size: 60px;
 
 .game-container {
   display: flex;
@@ -119,45 +132,51 @@ export default {
   font-weight: 600;
   text-align: center;
 }
-
+.panel-border {
+  width: 550px;
+  height: 550px;
+  border: 2px solid #333;
+  padding: 1px;
+}
 .panel-wrapper {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   width: 542px;
   height: 542px;
-  border: 1px solid #333;
+  border: 1px solid @border-bold-color;
   box-sizing: content-box;
 }
 
 .panel-cell {
   position: relative;
-  width: 58px;
-  height: 58px;
-  line-height: 58px;
+  width: @cell-size - 2px;
+  height: @cell-size - 2px;
+  line-height: @cell-size - 2px;
   text-align: center;
-  font-size: 24px;
-  border: 1px solid #666;
+  font-size: @font-size;
+  font-weight: 600;
+  color: @num-color;
+  border: 1px solid @border-color;
   box-sizing: content-box;
-  background: #f4db5c;
+  background: white;
   z-index: 0;
 }
 .cell-none-editable {
-  font-size: 26px;
-  font-weight: 600;
+  color: @border-bold-color;
 }
 .cell-border-right {
-  border-right: 2px solid #333;
+  border-right: 2px solid @border-bold-color;
   margin-right: 0 !important;
 }
 
 .cell-border-bottom {
-  border-bottom: 2px solid #333;
+  border-bottom: 2px solid @border-bold-color;
   margin-bottom: 0 !important;
 }
 
 .cell-wrapper-selected {
-  border: 2px solid orange;
+  border: 2px solid @danger-color;
   z-index: 1;
   margin: -1px;
 }
@@ -176,18 +195,20 @@ export default {
   width: 80px;
   height: 40px;
   line-height: 32px;
-  padding: 4px 12px;
+  padding: 4px;
   margin: 0 8px 8px 0;
   border-radius: 4px;
   text-align: center;
+  font-size: 16px;
+  font-weight: 600;
   color: white;
-  background: orange;
+  background: #1890ff;
 }
 
 .btn-disabled {
   background: gray;
 }
 .action-cell {
-  background: orangered;
+  background: @danger-color;
 }
 </style>
